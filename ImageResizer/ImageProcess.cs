@@ -81,7 +81,7 @@ namespace ImageResizer
         /// <param name="newWidth">新圖片的寬度</param>
         /// <param name="newHeight">新圖片的高度</param>
         /// <returns></returns>
-        Bitmap processBitmap(Bitmap img, int srcWidth, int srcHeight, int newWidth, int newHeight)
+        protected Bitmap processBitmap(Bitmap img, int srcWidth, int srcHeight, int newWidth, int newHeight)
         {
             Bitmap resizedbitmap = new Bitmap(newWidth, newHeight);
             Graphics g = Graphics.FromImage(resizedbitmap);

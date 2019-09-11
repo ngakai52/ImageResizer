@@ -14,7 +14,9 @@ namespace ImageResizer
             string sourcePath = Path.Combine(Environment.CurrentDirectory, "images");
             string destinationPath = Path.Combine(Environment.CurrentDirectory, "output"); ;
 
-            ImageProcess imageProcess = new ImageProcess();
+            var imageProcess = new ImageProcess();
+            var imageProcessAsync1 = new ImageProcessAsync1();
+            var imageProcessAsync2 = new ImageProcessAsync2();
 
             imageProcess.Clean(destinationPath);
 
@@ -23,7 +25,25 @@ namespace ImageResizer
             imageProcess.ResizeImages(sourcePath, destinationPath, 2.0);
             sw.Stop();
 
-            Console.WriteLine($"花費時間: {sw.ElapsedMilliseconds} ms");
+            Console.WriteLine($"同步版花費時間: {sw.ElapsedMilliseconds} ms");
+
+            sw.Reset();
+            sw.Start();
+            imageProcessAsync1.ResizeImagesAsync(sourcePath, destinationPath, 2.0).Wait();
+            sw.Stop();
+
+            Console.WriteLine($"非同步版花費時間: {sw.ElapsedMilliseconds} ms");
+
+
+            sw.Reset();
+            sw.Start();
+            imageProcessAsync2.ResizeImagesAsync(sourcePath, destinationPath, 2.0).Wait();
+            sw.Stop();
+
+            Console.WriteLine($"非同步版2花費時間: {sw.ElapsedMilliseconds} ms");
+
+
+            Console.ReadKey();
         }
     }
 }

@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ImageProcess.cs" />
+    <Compile Include="ImageProcessAsync2.cs" />
+    <Compile Include="ImageProcessAsync1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
